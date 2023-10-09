@@ -6,7 +6,7 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  document.getElementById("excuse").innerHTML = excuseGenerator();
+  document.getElementById("excuse").innerHTML = generateExcuse;
 };
 
 let who = ["My goat", "My grandma", "The monkey", "The robot"];
@@ -19,11 +19,24 @@ let when = [
   "when I was three"
 ];
 
-function excuseGenerator() {
-  let whorandom = who[Math.floor(Math.random() * who.length)];
-  let actionrandom = action[Math.floor(Math.random() * action.length)];
-  let whatrandom = what[Math.floor(Math.random() * what.length)];
-  let whenrandom = when[Math.floor(Math.random() * when.length)];
-
-  return whorandom + " " + actionrandom + " " + whatrandom + " " + whenrandom;
+function bringPosition(array) {
+  let thePosition;
+  thePosition = array[Math.floor(Math.random() * array.length)];
+  return thePosition;
 }
+
+function bringElement(who, action, what, when) {
+  let theElement = "";
+  theElement =
+    bringPosition(who) +
+    " " +
+    bringPosition(action) +
+    " " +
+    bringPosition(what) +
+    " " +
+    bringPosition(when) +
+    " ";
+  return theElement;
+}
+
+let generateExcuse = bringElement(who, action, what, when);
